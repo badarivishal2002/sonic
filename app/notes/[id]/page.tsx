@@ -1,12 +1,13 @@
 /**
  * Note Detail Page
- * Server-side rendered note detail view
+ * Notion-style note detail view with share functionality
  */
 
 import { noteService } from '@/server/modules/notes/note.service';
 import { NoteDetail } from '@/components/NoteDetail';
 import { Note } from '@/server/core/types';
 import { notFound } from 'next/navigation';
+import { NoteDetailPageClient } from '@/components/NoteDetailPageClient';
 
 /**
  * Server Component: Fetches note server-side
@@ -31,8 +32,10 @@ export default async function NoteDetailPage({
       notFound();
     }
     // Error case - return error message
-    return <NoteDetail note={{} as Note} error={error || 'Note not found'} />;
+    return (
+      <NoteDetailPageClient noteId={id} note={{} as Note} error={error || 'Note not found'} />
+    );
   }
 
-  return <NoteDetail note={note} error={error} />;
+  return <NoteDetailPageClient noteId={id} note={note} error={error} />;
 }

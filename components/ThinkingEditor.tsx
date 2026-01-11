@@ -2,6 +2,7 @@
  * ThinkingEditor Component
  * Main thinking surface - auto-saving text editor
  * Auto-focused, always saving, no buttons or modes
+ * Notion-style dark theme
  */
 
 'use client';
@@ -151,11 +152,11 @@ export const ThinkingEditor = forwardRef<ThinkingEditorHandle, ThinkingEditorPro
           value={content}
           onChange={handleChange}
           placeholder="What's on your mind?"
-          className="flex-1 w-full resize-none border-0 outline-none text-lg leading-relaxed p-8 bg-transparent placeholder:text-gray-400 focus:ring-0"
+          className="flex-1 w-full resize-none border-0 outline-none text-lg leading-relaxed bg-transparent text-[#E9E9E9] placeholder-[#9B9B9B] focus:ring-0"
           style={{ minHeight: '400px' }}
         />
         {isSaving && (
-          <div className="px-8 pb-4 text-xs text-gray-400">Saving...</div>
+          <div className="text-xs text-[#9B9B9B]">Saving...</div>
         )}
       </div>
     );
