@@ -2,6 +2,7 @@
  * VoiceCaptureBar Component
  * Fixed bottom voice capture bar
  * Inline, always visible, never disruptive
+ * Notion-style dark theme
  */
 
 'use client';
@@ -207,11 +208,11 @@ export function VoiceCaptureBar({ noteId, onTranscriptComplete }: VoiceCaptureBa
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex items-center justify-center gap-4 z-10">
+    <div className="fixed bottom-0 left-64 right-0 bg-[#2E2E2E] border-t border-[#3E3E3E] px-6 py-3 flex items-center justify-center gap-4 z-10">
       {!isRecording && !isProcessing && (
         <button
           onClick={startRecording}
-          className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 text-[#E9E9E9] hover:text-white hover:bg-[#3E3E3E] rounded transition-colors"
         >
           <span className="text-xl">🎙</span>
           <span>Speak</span>
@@ -222,12 +223,12 @@ export function VoiceCaptureBar({ noteId, onTranscriptComplete }: VoiceCaptureBa
         <>
           <button
             onClick={stopRecording}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-[#E9E9E9] hover:text-white hover:bg-[#3E3E3E] rounded transition-colors"
           >
             <span className="text-xl">⏹</span>
             <span>Stop</span>
           </button>
-          <div className="flex items-center gap-2 text-sm text-gray-500">
+          <div className="flex items-center gap-2 text-sm text-[#9B9B9B]">
             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
             <span className="font-mono">{formatTime(recordingTime)}</span>
           </div>
@@ -235,7 +236,7 @@ export function VoiceCaptureBar({ noteId, onTranscriptComplete }: VoiceCaptureBa
       )}
 
       {isProcessing && (
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-[#9B9B9B]">
           <span>⏳</span>
           <span>Transcribing…</span>
         </div>

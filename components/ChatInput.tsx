@@ -1,6 +1,6 @@
 /**
  * ChatInput Component
- * Text input for chat queries
+ * Notion-style chat input
  */
 
 'use client';
@@ -30,23 +30,27 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   };
 
   return (
-    <div className="flex gap-2 p-4 border-t border-gray-200 bg-white">
-      <textarea
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={handleKeyDown}
-        disabled={disabled}
-        placeholder="Ask a question about your notes..."
-        rows={1}
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed resize-none"
-      />
-      <button
-        onClick={handleSubmit}
-        disabled={disabled || !message.trim()}
-        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-      >
-        Send
-      </button>
+    <div className="flex gap-2">
+      <div className="flex-1 relative">
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+          placeholder="Ask, search, or make anything..."
+          rows={1}
+          className="w-full px-4 py-3 bg-[#2E2E2E] border border-[#3E3E3E] rounded-lg text-[#E9E9E9] placeholder-[#9B9B9B] focus:outline-none focus:border-[#4E4E4E] disabled:opacity-50 disabled:cursor-not-allowed resize-none"
+        />
+        <button
+          onClick={handleSubmit}
+          disabled={disabled || !message.trim()}
+          className="absolute right-2 bottom-2 p-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded transition-colors"
+        >
+          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }
